@@ -1,8 +1,7 @@
 # author: sunshine
 # datetime:2021/7/23 上午10:17
-import numpy as np
+
 import torch
-import torch.nn.functional as F
 from transformers import AdamW, get_linear_schedule_with_warmup
 from src.model import SMPNet
 import logging

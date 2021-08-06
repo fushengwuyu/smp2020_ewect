@@ -44,7 +44,7 @@ def build_dataset(args, tokenizer, debug=False):
         train_usual_data) % len(train_virus_data)]
 
     assert len(train_usual_data) == len(pad_virus_data)
-
+    print(len(train_usual_data))
     train_data = list(zip(train_usual_data, pad_virus_data))
 
     dev_usual_data = load_data(args.data_path + '/eval/usual_eval_labeled.txt')
@@ -91,7 +91,7 @@ def main():
 
     tokenizer = BertTokenizer.from_pretrained(args.bert_path)
     # 处理数据
-    data_loader, label2id = build_dataset(args, tokenizer, debug=True)
+    data_loader, label2id = build_dataset(args, tokenizer, debug=False)
 
     # 构建trainer
 
@@ -101,7 +101,7 @@ def main():
         tokenizer=tokenizer,
         id2label={v: k for k, v in label2id.items()}
     )
-
+    print(len(data_loader[0]))
     trainer.train()
 
 
